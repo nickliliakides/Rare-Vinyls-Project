@@ -1,0 +1,26 @@
+﻿@model RareVinyls.Models.Vinyl
+
+@{
+    ViewBag.Title = "About";
+}
+
+<div class="container mainHeader"><div class="panel-heading"><img src="~/Image/vinyl-record.png" />&nbsp;&nbsp;Rare Vinyls</div></div>
+
+<div class="text-center">
+    <h1>Welcome to the Rare Vinyls web page!</h1>
+
+    <h2>The entire web page has been created for educational purpose.</h2>
+
+    <h2>You can search, find or upload here information about rare vinyl editions that you are looking to buy or sell, from or to other individuals. </h2>
+
+    <h3>Contact the author: <a class="mail" href="mailto:nickliliakides@gmail.com">nickliliakides@gmail.com</a></h3>
+
+    <h3>Thank you for your visit! We hope you will enjoy it!</h3>
+    <br /><br /><br />
+    <div class="text-center addVinyl">
+        @Html.ActionLink("Back To Main Page", "Index", null, new { @class = "btn btn-success about"})
+    </div>
+</div>
+
+<br /><br /><br />
+

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<RareVinyls.Models.Vinyl>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div class="container body-content">
+<div class="col-md-12 mainHeader"><div class="panel-heading"><img src="~/Image/vinyl-record.png" />&nbsp;&nbsp;Rare Vinyls</div></div>
+    
+       
+    @using (Html.BeginForm())
+    {
+        <div class="row">   
+            <div class="col-md-9">
+                <div class="search">
+                    Genre: @Html.DropDownList("vinylGenre", "All")&nbsp;&nbsp;
+                    Artist: @Html.TextBox("vinylArtist")&nbsp;&nbsp;
+                    Title: @Html.TextBox("vinylTitle")&nbsp;&nbsp;
+                    <input type="submit" class="sbmtBtn" value="Filter"/>
+                </div>
+            </div>
+            <div class="col-md-1 text-right">
+                @Html.ActionLink("About", "About", null, new { @class = "btn btn-success", width = "100" })
+            </div>
+            <div class="col-md-2 text-right">
+                @Html.ActionLink("Add new vinyl", "Add", null, new { @class = "btn btn-success", width = "100" })
+            </div>
+        </div>
+    }
+        
+<table class="table">
+    <tr class="table-header">
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Picture)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Artist)
+        </th>
+        <th class="text-center">
+            Year of Release
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th class="text-center">
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th class="text-center">
+            Owner's Email
+        </th>
+        <th class="text-center">
+            Additional Info
+        </th>
+        <th class="text-center">
+            Actions
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-center">
+                <img class="vinylImage" src="@Url.Content(item.Picture)" height="120" />
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(m => item.Title)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(m => item.Artist)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(m => item.ReleaseYear)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(m => item.Genre)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(m => item.Price)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(m => item.Owner_s_Email)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(m => item.Additional_Info)
+            </td>
+            <td class="text-center">
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-warning" }) <br /><br />
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-warning" }) <br /><br />
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-warning" })<br /><br />
+            </td>
+
+        </tr>
+    }
+        </table>
+    </div>
